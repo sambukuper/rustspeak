@@ -10,7 +10,7 @@ pub const APP_SHORT: &str = "RustSpeak";
 /// Executable name (Windows `.exe` appended by the OS).
 pub const EXE_NAME: &str = "rustspeak";
 /// RustSpeak release version. TS3 shipped 3.5.6 (2020-11-25); RustSpeak starts at 0.1.0.
-pub const APP_VERSION: &str = "0.1.0";
+pub const APP_VERSION: &str = "0.2.0";
 /// Version inherited from the analysis target for compatibility notes.
 pub const TS3_REFERENCE_VERSION: &str = "3.5.6";
 /// Plugin API level carried over from TS3 3.5.6 (changelog: "Updated Plugin API version to 25").

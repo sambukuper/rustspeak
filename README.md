@@ -9,8 +9,12 @@ push-to-talk, plugin API), new implementation, new name.
 
 ## Status
 
-`0.1.0` with a CLI demo. Connect flow, channel tree, plugin API v25
-handshake. Zero runtime dependencies, so `cargo build` works offline.
+`0.2.0` with a full GUI client in Rust (egui). Launching `rustspeak` opens
+the window: menu bar, toolbar, channel tree with talking indicators, chat,
+PTT and mute controls, status bar. Connect to a server from the GUI or
+from the CLI with `rustspeak connect`. The console demo stays available
+with `--no-gui`. `rustspeak test-connection` verifies a TeamSpeak server
+over ServerQuery (port 10011).
 
 ## Build
 
@@ -25,8 +29,10 @@ cargo run -- connect play.rustspeak.gg Alice
 
 ```
 src/
-  main.rs       CLI entry + demo session
+  main.rs       entry point (GUI default, demo session)
   cli.rs        argument parsing, --help / --version
+  gui.rs        egui window: menus, channel tree, chat, PTT, status bar
+  teamspeak.rs  ServerQuery test connection (TCP, std only)
   branding.rs   RustSpeak name, version, plugin API v25 (from TS3 3.5.6)
   model.rs      channels, clients, chat, channel tree rendering
   protocol.rs   RustSpeak wire codec (framed commands)
@@ -48,4 +54,4 @@ any code was written. See `docs/MAPPING.md`.
 
 * cpal plus opus `AudioBackend` implementation for voice in and out
 * Server directory and friends
-* Tauri or wry UI over the channel tree in `model.rs`
+* Plugin API v25 host built on `branding.rs` and the `model.rs` tree

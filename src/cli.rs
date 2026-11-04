@@ -2,15 +2,18 @@
 
 use crate::branding;
 
-pub const USAGE: &str = "RustSpeak 0.1.0 — a Rust-native voice client (TeamSpeak 3 inspired)\n\
+pub const USAGE: &str = "RustSpeak 0.2.0 — a Rust-native voice client (TeamSpeak 3 inspired)\n\
 \n\
 Usage:\n\
   rustspeak [OPTIONS]\n\
+  rustspeak [OPTIONS] --no-gui\n\
   rustspeak connect <SERVER> [NICKNAME]\n\
   rustspeak test-connection [HOST]\n\
   rustspeak --version\n\
+\n  Default (no args) launches the GUI.\n\
 \nOptions:\n\
   --config <PATH>   Load rustspeak.toml (default: ./rustspeak.toml if present)\n\
+  --no-gui          Run the console demo instead of the GUI\n\
   -h, --help        Show this help\n\
   -V, --version     Show RustSpeak version\n\
 \nExamples:\n\
@@ -20,6 +23,7 @@ Usage:\n\
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum Command {
+    Gui,
     Demo,
     Connect { server: String, nickname: String },
     TestConnection { host: String },
@@ -50,7 +54,8 @@ pub fn parse_args(args: &[String]) -> Command {
             let _ = iter.next();
             Command::Demo
         }
-        _ => Command::Demo,
+        Some("--no-gui") => Command::Demo,
+        _ => Command::Gui,
     }
 }
 

@@ -1,15 +1,14 @@
 //! RustSpeak — a Rust-native voice client inspired by TeamSpeak 3.
 //!
 //! Modeled on TeamSpeak 3 Client 3.5.6 (`ts3client_win64.exe`,
-//! PE32+ x86_64, plugin API v25). This crate is the Rust-language
-//! successor: same concepts (servers, channels, clients, chat, PTT),
-//! rebuilt from scratch in Rust with zero runtime dependencies so it
-//! builds offline with `cargo build`.
+//! PE32+ x86_64, plugin API v25). Full GUI clone in Rust (egui):
+//! menu bar, channel tree, chat, PTT, ServerQuery connect.
 
 mod audio;
 mod branding;
 mod cli;
 mod config;
+mod gui;
 mod model;
 mod protocol;
 mod teamspeak;
@@ -34,6 +33,12 @@ fn main() {
         }
         cli::Command::Demo => {
             run_demo();
+        }
+        cli::Command::Gui => {
+            if let Err(e) = gui::run() {
+                eprintln!("GUI failed: {}", e);
+                std::process::exit(1);
+            }
         }
     }
 }
