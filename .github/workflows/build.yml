@@ -70,6 +70,18 @@ jobs:
 
       - name: Release asset (tags)
         if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        run: |
+          if [ "${{ matrix.exe }}" = "rustspeak.exe" ]; then
+            STAGED="rustspeak-${{ matrix.target }}.exe"
+          else
+            STAGED="rustspeak-${{ matrix.target }}"
+          fi
+          cp "target/${{ matrix.target }}/release/${{ matrix.exe }}" "$STAGED"
+          ls -lh "$STAGED"
+
+      - name: Publish release asset (tags)
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: target/${{ matrix.target }}/release/${{ matrix.exe }}
+          files: rustspeak-${{ matrix.target }}*
