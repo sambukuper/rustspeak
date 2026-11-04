@@ -1,0 +1,20 @@
+[package]
+name = "rustspeak"
+version = "0.1.0"
+edition = "2021"
+description = "RustSpeak — a Rust-native voice client inspired by TeamSpeak 3 (3.5.6). Channel tree, chat, PTT, and plugin API v25 surface."
+license = "MIT"
+authors = ["RustSpeak Contributors"]
+readme = "README.md"
+keywords = ["teamspeak", "voice", "voip", "rust", "client"]
+categories = ["network-programming", "multimedia"]
+rust-version = "1.99"
+
+[dependencies]
+
+[build-dependencies]
+
+[profile.release]
+lto = true
+opt-level = 3
+debug = false

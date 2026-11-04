@@ -1,0 +1,6 @@
+# RustSpeak config — mirrors the TS3 settings-directory idea.
+nickname = "Player"
+server = "localhost:9987"
+ptt_key = "RightShift"
+channel = "Lobby"
+plugin_api = 25
