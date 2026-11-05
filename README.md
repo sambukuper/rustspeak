@@ -9,12 +9,10 @@ push-to-talk, plugin API), new implementation, new name.
 
 ## Status
 
-`0.2.0` with a full GUI client in Rust (egui). Launching `rustspeak` opens
-the window: menu bar, toolbar, channel tree with talking indicators, chat,
-PTT and mute controls, status bar. Connect to a server from the GUI or
-from the CLI with `rustspeak connect`. The console demo stays available
-with `--no-gui`. `rustspeak test-connection` verifies a TeamSpeak server
-over ServerQuery (port 10011).
+Проект очень сырой. Скорее всего, дальнейших обновлений не будет.
+
+Кто хочет, забирайте код себе, дорабатывайте и делайте как угодно. Код
+распространяется под лицензией MIT, см. файл `LICENSE` в корне репозитория.
 
 ## Build
 
